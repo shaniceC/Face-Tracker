@@ -12,10 +12,9 @@ def show_detection(frame, face):
 
 def detect_face(cascade, frame):
     """ Detect a face in a frame """
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # perform the detection
-    faces = haar_face_alt_2.detectMultiScale(gray)
+    faces = cascade.detectMultiScale(frame)
 
     if len(faces) > 0:
         return faces[0]
@@ -42,7 +41,8 @@ if __name__ == '__main__':
             interpolation=cv2.INTER_AREA)
 
         # perform the detection
-        face = detect_face(haar_face_default, frame)
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        face = detect_face(haar_face_default, gray)
         if face is not None:
             # draw face detection
             img_face = show_detection(frame, face)
