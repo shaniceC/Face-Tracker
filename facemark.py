@@ -76,8 +76,8 @@ def shape_to_np(dlib_shape, dtype='int'):
 
 
 if __name__ == '__main__':
-    from detection import detect_face
-    haar_face_default = cv2.CascadeClassifier("cascades/haarcascade_frontalface_default.xml")
+    from detection import detect_face, load_cascade
+    haar_face_default = load_cascade()
 
     cap = cv2.VideoCapture(0)
     scaling_factor = 0.5
