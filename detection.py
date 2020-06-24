@@ -22,10 +22,14 @@ def detect_face(cascade, frame):
         return None
 
 
+def load_cascade():
+    haar_cascade = cv2.CascadeClassifier("cascades/haarcascade_frontalface_default.xml")
+    return haar_cascade
+
 if __name__ == '__main__':
     # load cascade classifiers:
-    haar_face_alt_2 = cv2.CascadeClassifier("cascades/haarcascade_frontalface_alt2.xml")
-    haar_face_default = cv2.CascadeClassifier("cascades/haarcascade_frontalface_default.xml")
+    # haar_face_alt_2 = cv2.CascadeClassifier("cascades/haarcascade_frontalface_alt2.xml")
+    haar_face_default = load_cascade()
 
     cap = cv2.VideoCapture(0)
     scaling_factor = 0.5
